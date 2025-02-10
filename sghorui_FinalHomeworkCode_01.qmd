@@ -1,0 +1,241 @@
+---
+title: "sghorui_OriginalHomeworkCode_01"
+author: "Soumalya"
+format: html
+editor: visual
+---
+
+# Module 4: Working with Other Data Structure
+
+Installing package [stringr](https://cran.r-project.org/web/packages/stringr/stringr.pdf)
+
+```{r}
+install.packages("stringr")
+```
+
+## Challenge 1
+
+-   First, create a vector of 1, word character strings comprising the first line of the novel *Ulysses*, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+
+    ```{r}
+    u<-c("Stately","plump","Buck","Mulligan","came","from","the","stairhead","bearing","a","bowl","of","lather","on","which","a","mirror","and","a","razor","lay","crossed") #creating the vector
+    u #displaying the result
+    ```
+
+Then, extract every third element of this vector.
+
+-   **HINT 1:** Take a look at the {stringr} package and the function `str_split()` to see if you can easily divide a single string into a vector of substrings.
+
+```{r}
+u[c(3,6,9,12,15,18,21)] #writing their index number(positions) within the vector to extract them.
+```
+
+```{r}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+```
+
+### Overwriting
+
+```{r}
+m[7, 1] <- 564
+m
+```
+
+```{r}
+m[, 8] <- 2
+m
+```
+
+```{r}
+m[2:5, 4:8] <- 1
+m
+```
+
+```{r}
+m[2:5, 4:8] <- c(20, 19, 18, 17)
+m
+```
+
+```{r}
+m[2:5, 4:8] <- matrix(data = c(20:1), nrow = 4, ncol = 5, byrow = TRUE)
+m
+```
+
+```{r}
+m[, 8] <- c("a", "b")
+m
+```
+
+## Challenge 2
+
+-   Given the matrix, **m**, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable **x**
+
+-   Given the matrix, **m**, above, extract the 6th to 8th row and assign them to the variable **x**
+
+-   Given the matrix, **m**, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable **x**
+
+```{r}
+x <- m[,c(2, 3, 6)] #extracting the 2nd, 3rd, and 6th columns from m,assigned them to the variable x
+x
+```
+
+```{r}
+x <- m[,c(6,8)] #Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x
+x
+```
+
+```{r}
+x <- m[c(2,3,4,5,6),c(2,3,4,5,6,7,8,9)] #Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x
+x
+```
+
+## **Challenge 3**
+
+-   Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named **a** consisting of the numbers 400 to 1 (i.e., a descending series).
+
+    ```{r}
+    a <- array(data = 400:1, dim = c(5,5,4,4)) #creating a 4D array
+    a
+    ```
+
+<!-- -->
+
+-   Given this matrix, what would the following return?
+
+    -   a\[1, 1, 1, 2\]
+
+    -   a\[2, 3, 2, \]
+
+    -   a\[1:5, 1:5, 3, 3\]
+
+    ```{r}
+    a[1, 1, 1, 2]
+    ```
+
+```{r}
+a[2, 3, 2, ]
+```
+
+```{r}
+a[1:5, 1:5, 3, 3]
+```
+
+## Challenge 4
+
+Create a **list** representing this (simplified) primate taxonomy:
+
+-   Primates
+
+    -   Haplorhini
+
+        -   Anthropoidea
+
+            -   Platyrrhini
+
+                -   Cebidae
+
+                -   Atelidae
+
+                -   Pitheciidae
+
+            -   Catarrhini
+
+                -   Cercopithecidae
+
+                -   Hylobatidae
+
+                -   Hominidae
+
+        -   Tarsioidea
+
+            -   Tarsiidae
+
+    -   Strepsirhini
+
+        -   Lorisoidea
+
+            -   Lorisidae
+
+            -   Galagidae
+
+        -   Lemuroidea
+
+            -   Cheirogaleidae
+
+            -   Lepilemuridae
+
+            -   Indriidae
+
+            -   Lemuridae
+
+            -   Daubentoniidae
+
+```{r}
+Platyrrhini <- c("Cebidae","Atelidae","Pitheciidae") #going from left to right, doing this list first and then the next upper order
+Catarrhini <- c("Cercopithecidae","Hylobatidae","Hominidae")
+Tarsioidea <- c("Tarsiidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini) #listing the next level
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini") #naming them so that they shows the names of the given list under each of them
+names(Tarsioidea) <- list("Tarsioidea")
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae") #repeating the process
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+```
+
+## Challenge 5
+
+-   Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix ROW-WISE.
+
+-   Then, do the following:
+
+    -   Coerce the matrix to a data frame.
+
+    -   As a data frame, coerce the second column to be *logical-valued*
+
+    -   As a data frame, coerce the third column to be *factor-valued*
+
+When you are done, use the `str()` command to show the data type for each variable in your dataframe.
+
+```{r}
+m3 <- matrix(c(3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 
+             nrow = 5, ncol = 3, byrow = TRUE)
+m3
+```
+
+```{r}
+df <- as.data.frame(m3)
+df
+```
+
+```{r}
+df[[2]] <- as.logical(df[[2]])
+df
+```
+
+```{r}
+df[[3]] <- as.factor(df[[3]])
+df
+```
+
+```{r}
+str(df)
+```
+
+**5 Challenges I faced:**
+
+1.  At first, the at the start of this assignment, I was not able to connect R studio and GitHub together, due to some technical difficulties in mac. Then it worked when Chris did it manually. But it again showed error when I created a new project. So, deleted everything and reinstalled R from the beggining.
+
+2.  I guess the problem was due to the directory error. I was saving the files in different places initially which might have been the issue. Once, I fixed it (saving all the files of AN 588 under a single folder), it seems to work smoothly since then; I was also able to commit.
+
+3.  I am not able to get a hang of stringr package in challenge 1. Carly wrote me a code showing the steps, but I am still having some doubts. Will get it cleared from her next time
+
+4.  Challenge 4 was a bit difficult, setting up the correct order was tricky.
+
+5.  I was facing difficulties in figuring out where the index number for rows and columns would be assigned. Then I figured out that its first row and then column
