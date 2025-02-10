@@ -238,4 +238,4 @@ str(df)
 
 4.  Challenge 4 was a bit difficult, setting up the correct order was tricky.
 
-5.  I was facing difficulties in figuring out where the index number for rows and columns would be assigned. Then I figured out that its first row and then column.
+5.  I was facing difficulties in figuring out where the index number for rows and columns would be assigned. Then I figured out that its first row and then column
