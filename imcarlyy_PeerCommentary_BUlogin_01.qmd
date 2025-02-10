@@ -43,8 +43,7 @@ u[c(3,6,9,12,15,18,21)] #writing their index number(positions) within the vector
 
 [*#Carly's comment: I never would've thought of writing the text's index number within the vector to extract them! This seems like a much easier and understandable code, and it would've definitely made my life easier in my R project! Lol. However, another great tip that I learned about, after working on it for hours, would be using the str_split() code to extract specific elements in certain rows. I think that it could be very useful with much longer texts. I won't run it this time because I would need to change/delete your previous codes or the code I already ran before, but I'll write it here and explain what to add to make it work:*]{.underline}
 
-**every_3rd_element \<- splited_sentence\[seq(3, length(splited_sentence), by = 3 ) \]
-every_3rd_element**
+**every_3rd_element \<- splited_sentence\[seq(3, length(splited_sentence), by = 3 ) \] every_3rd_element**
 
 *So,*
 
