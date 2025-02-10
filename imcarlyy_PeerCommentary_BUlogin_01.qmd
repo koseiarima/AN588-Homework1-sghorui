@@ -256,4 +256,4 @@ df
 str(df)
 ```
 
-[*#Carly's final comment: Soumalya, I love how organized your code is. It has a great structure, and adding the instructions in each one of the steps made everything run smoothly. In general, I've learned that R can be very tricky and confusing when the files that we use aren't visually pleasant. However, your file didn't make me feel that way at all! Congrats for doing a great job!*]{.underline}
+[*#Carly's final comment: Soumalya, I love how organized your code is. It has a great structure, and adding the instructions in each one of the steps made everything run smoothly. In general, I've learned that R can be very tricky and confusing when the files that we use aren't visually pleasant. However, your file didn't make me feel that way at all! Congrats for doing a great job!!!*]{.underline}
