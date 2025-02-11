@@ -1,0 +1,260 @@
+---
+title: "sghorui_OriginalHomeworkCode_01"
+author: "Soumalya"
+format: html
+editor: visual
+---
+
+# Module 4: Working with Other Data Structure
+
+[*#Carly's comment: Hi Soumalya! It's a pleasure commenting your code. I wanted to give you a heads-up and let you know that my comments will always be under the code that I seek to comment on. You'll usually see my written comment + the code that I suggest using (if needed). Xo!*]{.underline}
+
+Installing package [stringr](https://cran.r-project.org/web/packages/stringr/stringr.pdf)
+
+```{r}
+install.packages("stringr")
+```
+
+## Challenge 1
+
+-   First, create a vector of 1, word character strings comprising the first line of the novel *Ulysses*, by James Joyce: “Stately, plump Buck Mulligan came from the stairhead, bearing a bowl of lather on which a mirror and a razor lay crossed.”
+
+    ```{r}
+    u<-c("Stately","plump","Buck","Mulligan","came","from","the","stairhead","bearing","a","bowl","of","lather","on","which","a","mirror","and","a","razor","lay","crossed") #creating the vector
+    u #displaying the result
+    ```
+
+[*#Carly's comment: I love how your code is well organized, and the way you used the headings to give it structure and make it visually appealing. My first comment on your code would be just an additional suggestion/tip to save yourself some time. So, I noticed that here, on Challenge 1, you removed the punctuation from the text by yourself. However, if you run the following code, it could make everything much more easier and faster for you:*]{.underline}
+
+```{r}
+#CARLY'S CODE: At the beginning of this code, you write a new 'name' for this vector and then almost at the end of this code, you write your previous vector's name. In your case, it was 'u'. 
+
+u_withnopunctuation <- gsub("[[:punct:]]","",u) 
+u_withnopunctuation
+```
+
+Then, extract every third element of this vector.
+
+-   **HINT 1:** Take a look at the {stringr} package and the function `str_split()` to see if you can easily divide a single string into a vector of substrings.
+
+```{r}
+u[c(3,6,9,12,15,18,21)] #writing their index number(positions) within the vector to extract them.
+```
+
+[*#Carly's comment: I never would've thought of writing the text's index number within the vector to extract them! This seems like a much easier and understandable code, and it would've definitely made my life easier in my R project! Lol. However, another great tip that I learned about, after working on it for hours, would be using the str_split() code to extract specific elements in certain rows. I think that it could be very useful with much longer texts. I won't run it this time because I would need to change/delete your previous codes or the code I already ran before, but I'll write it here and explain what to add to make it work:*]{.underline}
+
+**every_3rd_element \<- splited_sentence\[seq(3, length(splited_sentence), by = 3 ) \] every_3rd_element**
+
+*So,*
+
+1.  In the "***every_3rd_element***", you basically put the name of the output of this code/name the new variable.
+2.  The "***splited_sentence\[....\]***" part selects the element from the variable that you ran before, in which you splitted your sentence. In your case, it would be your vector 'u'.
+3.  The "***seq(...)***" part creates a sequence of numbers basing it on the arguments that you give it.
+4.  *The part that's inside of this code, or "**3, length(splited_sentence), by = 3**" mean:*
+    1.  **3** counts as the starting point. You're code basically will need to start the splitting on the 3rd element.
+    2.  The "***length(splited_sentence)"** part* counts as the ending point. It gives R the total \# of elements that are in the vector ***splited_sentence***.
+    3.  The "***,by=3 part***" will count every third word in the sentence, and pick out those words for your new variable/output.
+
+```{r}
+m <- matrix(data = 1:80, nrow = 8, ncol = 10, byrow = FALSE)
+m
+```
+
+### Overwriting
+
+```{r}
+m[7, 1] <- 564
+m
+```
+
+```{r}
+m[, 8] <- 2
+m
+```
+
+```{r}
+m[2:5, 4:8] <- 1
+m
+```
+
+```{r}
+m[2:5, 4:8] <- c(20, 19, 18, 17)
+m
+```
+
+```{r}
+m[2:5, 4:8] <- matrix(data = c(20:1), nrow = 4, ncol = 5, byrow = TRUE)
+m
+```
+
+```{r}
+m[, 8] <- c("a", "b")
+m
+```
+
+## Challenge 2
+
+-   Given the matrix, **m**, above, extract the 2nd, 3rd, and 6th columns and assign them to the variable **x**
+
+-   Given the matrix, **m**, above, extract the 6th to 8th row and assign them to the variable **x**
+
+-   Given the matrix, **m**, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable **x**
+
+```{r}
+x <- m[,c(2, 3, 6)] #extracting the 2nd, 3rd, and 6th columns from m,assigned them to the variable x
+x
+```
+
+```{r}
+x <- m[,c(6,8)] #Given the matrix, m, above, extract the 6th to 8th row and assign them to the variable x
+x
+```
+
+```{r}
+x <- m[c(2,3,4,5,6),c(2,3,4,5,6,7,8,9)] #Given the matrix, m, above, extract the elements from row 2, column 2 to row 6, column 9 and assign them to the variable x
+x
+```
+
+## **Challenge 3**
+
+-   Construct a 4-dimensional, 400 element array (5 x 5 x 4 x 4) named **a** consisting of the numbers 400 to 1 (i.e., a descending series).
+
+    ```{r}
+    a <- array(data = 400:1, dim = c(5,5,4,4)) #creating a 4D array
+    a
+    ```
+
+<!-- -->
+
+-   Given this matrix, what would the following return?
+
+    -   a\[1, 1, 1, 2\]
+
+    -   a\[2, 3, 2, \]
+
+    -   a\[1:5, 1:5, 3, 3\]
+
+    ```{r}
+    a[1, 1, 1, 2]
+    ```
+
+```{r}
+a[2, 3, 2, ]
+```
+
+```{r}
+a[1:5, 1:5, 3, 3]
+```
+
+## Challenge 4
+
+Create a **list** representing this (simplified) primate taxonomy:
+
+-   Primates
+
+    -   Haplorhini
+
+        -   Anthropoidea
+
+            -   Platyrrhini
+
+                -   Cebidae
+
+                -   Atelidae
+
+                -   Pitheciidae
+
+            -   Catarrhini
+
+                -   Cercopithecidae
+
+                -   Hylobatidae
+
+                -   Hominidae
+
+        -   Tarsioidea
+
+            -   Tarsiidae
+
+    -   Strepsirhini
+
+        -   Lorisoidea
+
+            -   Lorisidae
+
+            -   Galagidae
+
+        -   Lemuroidea
+
+            -   Cheirogaleidae
+
+            -   Lepilemuridae
+
+            -   Indriidae
+
+            -   Lemuridae
+
+            -   Daubentoniidae
+
+```{r}
+Platyrrhini <- c("Cebidae","Atelidae","Pitheciidae") #going from left to right, doing this list first and then the next upper order
+Catarrhini <- c("Cercopithecidae","Hylobatidae","Hominidae")
+Tarsioidea <- c("Tarsiidae")
+Anthropoidea <- list(Platyrrhini, Catarrhini) #listing the next level
+names(Anthropoidea) <- list("Platyrrhini", "Catarrhini") #naming them so that they shows the names of the given list under each of them
+names(Tarsioidea) <- list("Tarsioidea")
+Haplorhini <- list(Anthropoidea, Tarsioidea)
+names(Haplorhini) <- list("Anthropoidea", "Tarsioidea")
+Lemuroidea <- c("Cheirogaleidae", "Lepilemuridae", "Indriidae", "Lemuridae", "Daubentoniidae") #repeating the process
+Lorisoidea <- c("Lorisidae", "Galagidae")
+Strepsirhini <- list(Lemuroidea, Lorisoidea)
+names(Strepsirhini) <- list("Lemuroidea", "Lorisoidea")
+Primates <- list(Haplorhini, Strepsirhini)
+names(Primates) <- list("Haplorhini", "Strepsirhini")
+Primates
+```
+
+[*#Carly's comment: I just wanted to mention that I found very impressing how you organized your code here to make the Primate's taxonomy. It was very hard, and confusing for me. Mainly because of how long the code had to be, and because of the order precision. Your code is very readable, and I love how you specify what each part means!. Great work!!!*]{.underline}
+
+## Challenge 5
+
+-   Store the following numbers as a 5 x 3 matrix, called “m3”: 3, 0, 1 ,23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2. Be sure to fill the matrix ROW-WISE.
+
+-   Then, do the following:
+
+    -   Coerce the matrix to a data frame.
+
+    -   As a data frame, coerce the second column to be *logical-valued*
+
+    -   As a data frame, coerce the third column to be *factor-valued*
+
+When you are done, use the `str()` command to show the data type for each variable in your dataframe.
+
+```{r}
+m3 <- matrix(c(3, 0, 1, 23, 1, 2, 33, 1, 1, 42, 0, 1, 41, 0, 2), 
+             nrow = 5, ncol = 3, byrow = TRUE)
+m3
+```
+
+```{r}
+df <- as.data.frame(m3)
+df
+```
+
+```{r}
+df[[2]] <- as.logical(df[[2]])
+df
+```
+
+```{r}
+df[[3]] <- as.factor(df[[3]])
+df
+```
+
+```{r}
+str(df)
+```
+
+[*#Carly's comment: I just wanted to remind you to not forget to mention the challenges you've faced throughout this homework (Chris asked for that too).*]{.underline}
+
+[*#Carly's final comment: Soumalya, I love how organized your code is. It has a great structure, and adding the instructions in each one of the steps made everything run smoothly. In general, I've learned that R can be very tricky and confusing when the files that we use aren't visually pleasant. However, your file didn't make me feel that way at all! Congrats for doing a great job!*]{.underline}
