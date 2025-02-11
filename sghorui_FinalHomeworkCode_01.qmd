@@ -9,7 +9,7 @@ editor: visual
 
 Installing package [stringr](https://cran.r-project.org/web/packages/stringr/stringr.pdf)
 
-```{r}
+```{r,eval=F}
 install.packages("stringr")
 ```
 
