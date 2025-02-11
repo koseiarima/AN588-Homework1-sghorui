@@ -234,7 +234,7 @@ str(df)
 
 2.  I guess the problem was due to the directory error. I was saving the files in different places initially which might have been the issue. Once, I fixed it (saving all the files of AN 588 under a single folder), it seems to work smoothly since then; I was also able to commit.
 
-3.  I am not able to get a hang of stringr package in challenge 1. Carly wrote me a code showing the steps, but I am still having some doubts. Will get it cleared from her next time
+3.  I am not able to get a hang of stringr package in challenge 1. Carly wrote me a code showing the steps, but I am still having some doubts. Will get it cleared from her next time.
 
 4.  Challenge 4 was a bit difficult, setting up the correct order was tricky.
 
